@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Pet Rescuer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css"></link:rel>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
@@ -64,19 +65,31 @@
           </div>
         </div>
       </nav>
-    <!-- Hero -->
-    <section class="hero is-medium is-info is-bold">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title">
-              Primary bold title
-            </h1>
-            <h2 class="subtitle">
-              Primary bold subtitle
-            </h2>
-          </div>
+
+    <!-- Start Hero Carousel -->
+    <section class="hero is-medium has-carousel">
+        <div id="carousel-demo" class="hero-carousel">
+            <div class="item-1">
+                <!-- Slide Content -->
+            </div>
+            <div class="item-2">
+                <!-- Slide Content -->
+            </div>
+            <div class="item-3">
+                <!-- Slide Content -->
+            </div>
+            <div class="item-4">
+                <!-- Slide Content -->
+            </div>
+            <div class="item-5">
+                <!-- Slide Content -->
+            </div>
         </div>
+        <div class="hero-head"></div>
+        <div class="hero-body"></div>
+        <div class="hero-foot"></div>
     </section>
+    <!-- End Hero Carousel -->
 
     <!-- Main -->
     <section>
@@ -162,6 +175,7 @@
       </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
