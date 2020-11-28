@@ -1,10 +1,10 @@
 let apiKey = "&key=L6hnfi6qPY2Ymz7I2e8VxHfWKuXZeyjl6cYxhyIclCcLCJjnHw";
 let dogUrl = "https://dog.ceo/api/breeds/list/all"
 let dogBreeds = document.getElementById("dog-breed");
-// let dogImage = document.getElementById("dog-pic");
+let dogPic = document.getElementById("dog-pic");
+let nameEl = document.getElementById("dog-name");
+let factEl = document.getElementById("dog-info");
 
-
-// let dogBreeds = ["Affenpinscher", "African", "Airedale", "Akita", "Appenzeller", "Australian Shepard", "Basenji", "Beagle", "Bluetick", "Borzoi", "Bouvier", "Boxer", "Barbacon", "Briard", "Norwegian Buhund", "Boston Bulldog", "English Bulldog", "French Bulldog", "Staffordshire Bullterrier", "Cairn", "Australian Cattledog", "Chihuahua", "Chow", "Clumber", "Cockapoo", "Border Collie", "Coonhound", "Cardigan Corgi", "Cotondetulear", "Dachshund", "Dalmatian", "Great Dane", "Scottish Deerhound", "Dhole", "Dingo", "Doberman", "Norwegian Elkhound", "entlebucher", "Eskimo", "Lapphund Finnish", "Bichon Frise", "Germanshepard", "Italian Greyhound", "Groenendael", "Havanese", "Afghan Hound", "Basset Hound", "Blood Hound", "English Hound", "Ibizan Hound", "Plott Hound", "Walker Hound", "Husky", "Keeshond", "Kelpie", "Komondor", "Kuvasz", "Labrador", "Leonberg", "Lhasa", "Malamute", "Malinois", "Maltese", "Bull Mastiff", "English Mastiff", "Tibetan Mastiff", "Mexicanhairless", "Mix", "Bernese Mountain", "Swiss Mointain", "Newfoundland", "Otterhound", "Caucasian Ovcharka", "Papillon", "Pekinese", "Pembroke", "Miniature Pinscher", "Pitbull", "German Pointer", "Germanlonghair Pointer", "Pomeranian", "Miniature Poodle", "Standard Poodle", "Toy Poodle", "Pug", "Puggle", "Pyrenees", "Redbone", "Chesapeake Retriever", "Curly Retriever", "Flatcoated Retriever", "Golden Retriever", "Rhodesian Ridgeback", "Rottweiler", "Saluki", "Samoyed", "Schipperke", "Giant Schnauzer", "Miniature Schnauzer", "English Setter", "Gordon Setter", "Irish Setter", "English Sheepdog", "Shetland Sheepdog", "Shiba", "Shihtzu", "Blenheim Spaniel", "Brittany Spaniel", "Cocker Spaniel", "Irish Spaniel", "Japanese Spaniel", "Sussex Spaniel", "Welsh Spaniel", "English Springer", "Stbernard", "American Terrier", "Australian Terrier", "Bedlington Terrier", "Border Terrier", "Dandie Terrier", "Fox Terrier", "Irish Terrier", "Kerryblue Terrier", "Lakeland Terrier", "Norfolk Terrier", "Norwich Terrier", "Patterdale Terrier", "Russell Terrier", "Scottish Terrier", "Sealyham Terrier", "Silky Terrier", "Tibetan Terrier", "Toy Terrier", "Westhighland Terrier", "Wheaten Terrier", "Yorkshire Terrier", "Vizsla", "Spanish Waterdog", "Weimaraner", "Whippet", "Irish Wolfhound"];
 
 // carousel 
 // bulmaCarousel.attach('#carousel-demo', {
@@ -41,18 +41,54 @@ let breedImages = function() {
         response.json()
         .then(function(data) {
             console.log(data);
-            dogsEl = data.message
-            document.getElementById("dog-pic").setAttribute("src", dogsEl);
+            dogsEl = data.message;
+            dogPic.setAttribute("src", dogsEl);
+            dogPic.setAttribute("alt", "Image of " + dogsEl);
             
         })
     })
 }
 
+// append Breed Name to Title in right card
+let breedName = function () {
+    let chosenBreed = dogBreeds.options[dogBreeds.selectedIndex].value;
+    
+    nameEl.innerHTML = "";
+    nameEl.append(chosenBreed);
+    
+}
+
+// get dog breed facts
+let breedfacts = function () {
+    let chosenBreed = dogBreeds.options[dogBreeds.selectedIndex].value;
+    let factUrl = "https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&explaintext=1&list=search&srsearch=dog_" + chosenBreed + "&prop=extracts&exintro=1&explaintext=1&redirects=1";
+
+    fetch(factUrl)
+    .then(function(response) {
+        response.json()
+        .then(function(data) {
+            console.log(data);
+            
+            fact = data.query.search[0].snippet;
+            // fact.remove("<span>");
+            factEl.innerHTML = "";
+            factEl.append(fact);
+            
+            
+        })
+    })
+
+}
 
 dogBreedList();
-// breedImages();
 
-dogBreeds.addEventListener("change", breedImages);
+dogBreeds.addEventListener("change", function() {
+    breedImages();
+    breedName();
+    breedfacts();
+
+    return;
+});
 
 
 
