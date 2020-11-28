@@ -1,9 +1,10 @@
 let apiKey = "&key=L6hnfi6qPY2Ymz7I2e8VxHfWKuXZeyjl6cYxhyIclCcLCJjnHw";
 let dogUrl = "https://dog.ceo/api/breeds/list/all"
-let selectBreeds = document.getElementById("dog-breed");
+let dogBreeds = document.getElementById("dog-breed");
+// let dogImage = document.getElementById("dog-pic");
 
 
-let dogBreeds = ["Affenpinscher", "African", "Airedale", "Akita", "Appenzeller", "Australian Shepard", "Basenji", "Beagle", "Bluetick", "Borzoi", "Bouvier", "Boxer", "Barbacon", "Briard", "Norwegian Buhund", "Boston Bulldog", "English Bulldog", "French Bulldog", "Staffordshire Bullterrier", "Cairn", "Australian Cattledog", "Chihuahua", "Chow", "Clumber", "Cockapoo", "Border Collie", "Coonhound", "Cardigan Corgi", "Cotondetulear", "Dachshund", "Dalmatian", "Great Dane", "Scottish Deerhound", "Dhole", "Dingo", "Doberman", "Norwegian Elkhound", "entlebucher", "Eskimo", "Lapphund Finnish", "Bichon Frise", "Germanshepard", "Italian Greyhound", "Groenendael", "Havanese", "Afghan Hound", "Basset Hound", "Blood Hound", "English Hound", "Ibizan Hound", "Plott Hound", "Walker Hound", "Husky", "Keeshond", "Kelpie", "Komondor", "Kuvasz", "Labrador", "Leonberg", "Lhasa", "Malamute", "Malinois", "Maltese", "Bull Mastiff", "English Mastiff", "Tibetan Mastiff", "Mexicanhairless", "Mix", "Bernese Mountain", "Swiss Mointain", "Newfoundland", "Otterhound", "Caucasian Ovcharka", "Papillon", "Pekinese", "Pembroke", "Miniature Pinscher", "Pitbull", "German Pointer", "Germanlonghair Pointer", "Pomeranian", "Miniature Poodle", "Standard Poodle", "Toy Poodle", "Pug", "Puggle", "Pyrenees", "Redbone", "Chesapeake Retriever", "Curly Retriever", "Flatcoated Retriever", "Golden Retriever", "Rhodesian Ridgeback", "Rottweiler", "Saluki", "Samoyed", "Schipperke", "Giant Schnauzer", "Miniature Schnauzer", "English Setter", "Gordon Setter", "Irish Setter", "English Sheepdog", "Shetland Sheepdog", "Shiba", "Shihtzu", "Blenheim Spaniel", "Brittany Spaniel", "Cocker Spaniel", "Irish Spaniel", "Japanese Spaniel", "Sussex Spaniel", "Welsh Spaniel", "English Springer", "Stbernard", "American Terrier", "Australian Terrier", "Bedlington Terrier", "Border Terrier", "Dandie Terrier", "Fox Terrier", "Irish Terrier", "Kerryblue Terrier", "Lakeland Terrier", "Norfolk Terrier", "Norwich Terrier", "Patterdale Terrier", "Russell Terrier", "Scottish Terrier", "Sealyham Terrier", "Silky Terrier", "Tibetan Terrier", "Toy Terrier", "Westhighland Terrier", "Wheaten Terrier", "Yorkshire Terrier", "Vizsla", "Spanish Waterdog", "Weimaraner", "Whippet", "Irish Wolfhound"];
+// let dogBreeds = ["Affenpinscher", "African", "Airedale", "Akita", "Appenzeller", "Australian Shepard", "Basenji", "Beagle", "Bluetick", "Borzoi", "Bouvier", "Boxer", "Barbacon", "Briard", "Norwegian Buhund", "Boston Bulldog", "English Bulldog", "French Bulldog", "Staffordshire Bullterrier", "Cairn", "Australian Cattledog", "Chihuahua", "Chow", "Clumber", "Cockapoo", "Border Collie", "Coonhound", "Cardigan Corgi", "Cotondetulear", "Dachshund", "Dalmatian", "Great Dane", "Scottish Deerhound", "Dhole", "Dingo", "Doberman", "Norwegian Elkhound", "entlebucher", "Eskimo", "Lapphund Finnish", "Bichon Frise", "Germanshepard", "Italian Greyhound", "Groenendael", "Havanese", "Afghan Hound", "Basset Hound", "Blood Hound", "English Hound", "Ibizan Hound", "Plott Hound", "Walker Hound", "Husky", "Keeshond", "Kelpie", "Komondor", "Kuvasz", "Labrador", "Leonberg", "Lhasa", "Malamute", "Malinois", "Maltese", "Bull Mastiff", "English Mastiff", "Tibetan Mastiff", "Mexicanhairless", "Mix", "Bernese Mountain", "Swiss Mointain", "Newfoundland", "Otterhound", "Caucasian Ovcharka", "Papillon", "Pekinese", "Pembroke", "Miniature Pinscher", "Pitbull", "German Pointer", "Germanlonghair Pointer", "Pomeranian", "Miniature Poodle", "Standard Poodle", "Toy Poodle", "Pug", "Puggle", "Pyrenees", "Redbone", "Chesapeake Retriever", "Curly Retriever", "Flatcoated Retriever", "Golden Retriever", "Rhodesian Ridgeback", "Rottweiler", "Saluki", "Samoyed", "Schipperke", "Giant Schnauzer", "Miniature Schnauzer", "English Setter", "Gordon Setter", "Irish Setter", "English Sheepdog", "Shetland Sheepdog", "Shiba", "Shihtzu", "Blenheim Spaniel", "Brittany Spaniel", "Cocker Spaniel", "Irish Spaniel", "Japanese Spaniel", "Sussex Spaniel", "Welsh Spaniel", "English Springer", "Stbernard", "American Terrier", "Australian Terrier", "Bedlington Terrier", "Border Terrier", "Dandie Terrier", "Fox Terrier", "Irish Terrier", "Kerryblue Terrier", "Lakeland Terrier", "Norfolk Terrier", "Norwich Terrier", "Patterdale Terrier", "Russell Terrier", "Scottish Terrier", "Sealyham Terrier", "Silky Terrier", "Tibetan Terrier", "Toy Terrier", "Westhighland Terrier", "Wheaten Terrier", "Yorkshire Terrier", "Vizsla", "Spanish Waterdog", "Weimaraner", "Whippet", "Irish Wolfhound"];
 
 // carousel 
 // bulmaCarousel.attach('#carousel-demo', {
@@ -11,37 +12,48 @@ let dogBreeds = ["Affenpinscher", "African", "Airedale", "Akita", "Appenzeller",
 //     slidesToShow: 4
 // });
 
-// Get breed list from API Array
-let breedList = function () {
+// generate pictures from Dog API
+let dogBreedList = function () {
     fetch(dogUrl)
     .then(function(response) {
         response.json()   
-    .then(function(data) {
-        console.log(data);
-        // let breed = "";
-        Object.keys(data.message).forEach(list => {
-            let breed = document.createElement("option");
-            breed.textContent = list;
-            breed.value = list;
-            selectBreeds.appendChild(breed);
+        .then(function(data) {
+            // console.log(data);
+            Object.keys(data.message).forEach(list => {
+                let breed = document.createElement("option");
+                breed.textContent = list;
+                breed.value = list;
+                dogBreeds.appendChild(breed);
 
-        })
+            })
+
         })
     })
 }
 
-breedList();
+// Get breed images from DogAPI
+let breedImages = function() {
+    let chosenBreed = dogBreeds.options[dogBreeds.selectedIndex].value;
+    let imageUrl = "https://dog.ceo/api/breed/" + chosenBreed + "/images/random";
 
-// pet form breed array in Modal 
+    fetch(imageUrl)
+    .then(function(response) {
+        response.json()
+        .then(function(data) {
+            console.log(data);
+            dogsEl = data.message
+            document.getElementById("dog-pic").setAttribute("src", dogsEl);
+            
+        })
+    })
+}
 
-// for (let i = 0; i < dogBreeds.length; i++) {
-//     let breed = dogBreeds[i];
-    // let el = document.createElement("option");
-    // el.textContent = breed;
-    // el.value = breed;
-    // selectBreeds.appendChild(el);
-    
-// }
+
+dogBreedList();
+// breedImages();
+
+dogBreeds.addEventListener("change", breedImages);
+
 
 
 
