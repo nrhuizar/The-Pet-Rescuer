@@ -51,10 +51,13 @@
             </div>
           </div>
       
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
-                <button class="button is-info is-outlined is-medium modal-button" data-target="search-modal" aria-haspopup="true">Dog Search</button>
+          <div class="field is-info">
+            <!-- <label class="label">Dog Breed</label> -->
+            <div class="control">
+              <div class="select">
+                <select id="dog-breed">
+                  <option>Select Dog Breed</option>
+                </select>
               </div>
             </div>
           </div>
@@ -91,18 +94,15 @@
       <div class="tile is-ancestor">
         <div class="tile is-parent">
           <article class="tile is-child box">
-            <p class="title">Side column</p>
-            <p class="subtitle">With some content</p>
-            <div class="content">
+            <div class="content" id="dog-pic">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
             </div>
           </article>
         </div>
         <div class="tile is-parent">
           <article class="tile is-child box">
-            <p class="title">Main column</p>
-            <p class="subtitle">With some content</p>
-            <div class="content">
+            <p class="title" id="dog-name">Main column</p>
+            <div class="content" id="dog-info">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
             </div>
           </article>
@@ -136,7 +136,7 @@
             <label class="label">Dog Breed</label>
             <div class="control">
               <div class="select">
-                <select id="dog-breed">
+                <select>
                   <option>Select Breed</option>
                 </select>
               </div>
