@@ -1,5 +1,5 @@
-let apiKey = "&key=L6hnfi6qPY2Ymz7I2e8VxHfWKuXZeyjl6cYxhyIclCcLCJjnHw";
-let dogUrl = "https://dog.ceo/api/breeds/list/all"
+let apiKey = "api_key=f45eb31a-c19e-4ac6-8c65-5035ba2b4484";
+let dogUrl = "https://api.TheDogAPI.com/v1/breeds?"
 let dogBreeds = document.getElementById("dog-breed");
 let dogPic = document.getElementById("dog-pic");
 let nameEl = document.getElementById("dog-name");
@@ -12,39 +12,49 @@ let factEl = document.getElementById("dog-info");
 //     slidesToShow: 4
 // });
 
-// generate pictures from Dog API
+// generate name list from Dog API
 let dogBreedList = function () {
-    fetch(dogUrl)
+    fetch(dogUrl + apiKey)
     .then(function(response) {
         response.json()   
         .then(function(data) {
             // console.log(data);
-            Object.keys(data.message).forEach(list => {
-                let breed = document.createElement("option");
-                breed.textContent = list;
-                breed.value = list;
-                dogBreeds.appendChild(breed);
-
-            })
-
+            menuData(data);
+            
+            
         })
     })
 }
 
+// function gets breed names and appends them to the dropdown
+let menuData = function (data) {
+    for (let i = 0; i < data.length; i++) {
+        let breedName = data[i].name;
+        let breedID = data[i].id;
+        // console.log(breedID);
+        let breed = document.createElement("option");
+        breed.textContent = breedName;
+        breed.value = breedName;
+        breed.setAttribute("id", breedID);
+        dogBreeds.appendChild(breed);
+    }
+}
+
 // Get breed images from DogAPI
 let breedImages = function() {
-    let chosenBreed = dogBreeds.options[dogBreeds.selectedIndex].value;
-    let imageUrl = "https://dog.ceo/api/breed/" + chosenBreed + "/images/random";
+    let chosenBreed = dogBreeds.options[dogBreeds.selectedIndex].id;
+    let imageUrl = "https://api.thedogapi.com/v1/images/search?include_breed=1&breed_id=" + chosenBreed + "&" + apiKey;
 
     fetch(imageUrl)
     .then(function(response) {
         response.json()
         .then(function(data) {
             console.log(data);
-            dogsEl = data.message;
+            dogsEl = data[0].url;
             dogPic.setAttribute("src", dogsEl);
             dogPic.setAttribute("alt", "Image of " + dogsEl);
-            
+           
+        breedInfo(data);
         })
     })
 }
@@ -58,38 +68,35 @@ let breedName = function () {
     
 }
 
-// get dog breed facts
-let breedfacts = function () {
-    let chosenBreed = dogBreeds.options[dogBreeds.selectedIndex].value;
-    let factUrl = "https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&explaintext=1&list=search&srsearch=dog_" + chosenBreed + "&prop=extracts&exintro=1&explaintext=1&redirects=1";
+let breedInfo = function (data) {
+    let dWeight = document.getElementById("dog-weight");
+    dWeight.textContent= "Average Weight: " + data[0].breeds[0].weight.imperial;
+    
+    let dHeight = document.getElementById("dog-height");
+    dHeight.textContent= "Average Height: " + data[0].breeds[0].height.imperial;
 
-    fetch(factUrl)
-    .then(function(response) {
-        response.json()
-        .then(function(data) {
-            console.log(data);
-            
-            fact = data.query.search[0].snippet;
-            // fact.remove("<span>");
-            factEl.innerHTML = "";
-            factEl.append(fact);
-            
-            
-        })
-    })
+    let dJob = document.getElementById("dog-job");
+    dJob.textContent= "Bred For: " + data[0].breeds[0].bred_for;
 
+    let dLife = document.getElementById("dog-life");
+    dLife.textContent= "Life Span: " + data[0].breeds[0].life_span;
+
+    let dTemperment = document.getElementById("dog-temperment");
+    dTemperment.textContent= "Temperment: " + data[0].breeds[0].temperament;
 }
+
 
 dogBreedList();
 
+
 dogBreeds.addEventListener("change", function() {
+
     breedImages();
     breedName();
-    breedfacts();
+ 
 
     return;
 });
-
 
 
 
