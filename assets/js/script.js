@@ -73,10 +73,10 @@ let breedName = function () {
 // display dog breed information
 let breedInfo = function (data) {
     let dWeight = document.getElementById("dog-weight");
-    dWeight.textContent= "Average Weight: " + data[0].breeds[0].weight.imperial;
+    dWeight.textContent= "Average Weight: " + data[0].breeds[0].weight.imperial + " lbs";
     
     let dHeight = document.getElementById("dog-height");
-    dHeight.textContent= "Average Height: " + data[0].breeds[0].height.imperial;
+    dHeight.textContent= "Average Height: " + data[0].breeds[0].height.imperial + " inches";
 
     let dJob = document.getElementById("dog-job");
     dJob.textContent= "Bred For: " + data[0].breeds[0].bred_for;
