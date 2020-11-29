@@ -49,11 +49,14 @@ let breedImages = function() {
     .then(function(response) {
         response.json()
         .then(function(data) {
-            console.log(data);
+            // console.log(data);
+
+            //generate dog image and append
             dogsEl = data[0].url;
             dogPic.setAttribute("src", dogsEl);
             dogPic.setAttribute("alt", "Image of " + dogsEl);
            
+            //get dog breed information
         breedInfo(data);
         })
     })
@@ -62,12 +65,12 @@ let breedImages = function() {
 // append Breed Name to Title in right card
 let breedName = function () {
     let chosenBreed = dogBreeds.options[dogBreeds.selectedIndex].value;
-    
     nameEl.innerHTML = "";
     nameEl.append(chosenBreed);
     
 }
 
+// display dog breed information
 let breedInfo = function (data) {
     let dWeight = document.getElementById("dog-weight");
     dWeight.textContent= "Average Weight: " + data[0].breeds[0].weight.imperial;
