@@ -7,10 +7,125 @@ let factEl = document.getElementById("dog-info");
 
 
 // carousel 
-// bulmaCarousel.attach('#carousel-demo', {
-//     slidesToScroll: 1,
-//     slidesToShow: 4
-// });
+bulmaCarousel.attach('#carousel-demo', {
+    slidesToScroll: 1,
+    slidesToShow: 3
+});
+// call carousel pictures
+let dogCarousel = function() {
+    dogPic1();
+    dogPic2();
+    dogPic3();
+    dogPic4();
+    dogPic5();
+    dogPic6();
+    dogPic7();
+    dogPic8();
+}
+
+// functions that call each picture for the carousel
+let dogPic1 = function() {
+    fetch("https://dog.ceo/api/breeds/image/random")
+    .then(function(response) {
+        response.json()   
+        .then(function(data) {
+            let randomPic = data.message;
+            let p1 = document.getElementById("pic1");
+            p1.setAttribute("src", randomPic);
+            p1.setAttribute("alt", "Image of Random Dog");            
+        })
+    })
+}
+let dogPic2 = function() {
+    
+    fetch("https://dog.ceo/api/breeds/image/random")
+    .then(function(response) {
+        response.json()   
+        .then(function(data) {
+            let randomPic = data.message;
+            let p2 = document.getElementById("pic2");
+            p2.setAttribute("src", randomPic);
+            p2.setAttribute("alt", "Image of Random Dog");            
+        })
+    })
+}
+let dogPic3 = function() {
+    
+    fetch("https://dog.ceo/api/breeds/image/random")
+    .then(function(response) {
+        response.json()   
+        .then(function(data) {
+            let randomPic = data.message;
+            let p3 = document.getElementById("pic3");
+            p3.setAttribute("src", randomPic);
+            p3.setAttribute("alt", "Image of Random Dog");  
+        })
+    })
+}
+let dogPic4 = function() {
+    
+    fetch("https://dog.ceo/api/breeds/image/random")
+    .then(function(response) {
+        response.json()   
+        .then(function(data) {
+            let randomPic = data.message;
+            let p4 = document.getElementById("pic4");
+            p4.setAttribute("src", randomPic);
+            p4.setAttribute("alt", "Image of Random Dog");
+        })
+    })
+}
+let dogPic5 = function() {
+    
+    fetch("https://dog.ceo/api/breeds/image/random")
+    .then(function(response) {
+        response.json()   
+        .then(function(data) {
+            let randomPic = data.message;
+            let p5 = document.getElementById("pic5");
+            p5.setAttribute("src", randomPic);
+            p5.setAttribute("alt", "Image of Random Dog");   
+        })
+    })
+}
+let dogPic6 = function() {
+    
+    fetch("https://dog.ceo/api/breeds/image/random")
+    .then(function(response) {
+        response.json()   
+        .then(function(data) {
+            let randomPic = data.message;
+            let p6 = document.getElementById("pic6");
+            p6.setAttribute("src", randomPic);
+            p6.setAttribute("alt", "Image of Random Dog");   
+        })
+    })
+}
+let dogPic7 = function() {
+    
+    fetch("https://dog.ceo/api/breeds/image/random")
+    .then(function(response) {
+        response.json()   
+        .then(function(data) {
+            let randomPic = data.message;
+            let p7 = document.getElementById("pic7");
+            p7.setAttribute("src", randomPic);
+            p7.setAttribute("alt", "Image of Random Dog");
+        })
+    })
+}
+let dogPic8 = function() {
+    fetch("https://dog.ceo/api/breeds/image/random")
+    .then(function(response) {
+        response.json()   
+        .then(function(data) {
+            let randomPic = data.message;
+            let p8 = document.getElementById("pic8");
+            p8.setAttribute("src", randomPic);
+            p8.setAttribute("alt", "Image of Random Dog");    
+        })
+    })
+}
 
 // generate name list from Dog API
 let dogBreedList = function () {
@@ -72,37 +187,54 @@ let breedName = function () {
 
 // display dog breed information
 let breedInfo = function (data) {
+
+    // dog weight
+    let txtWeight = document.getElementById("weightTitle");
+    txtWeight.textContent = "Average Weight: ";
+
     let dWeight = document.getElementById("dog-weight");
-    dWeight.textContent= "Average Weight: " + data[0].breeds[0].weight.imperial + " lbs";
-    
+    dWeight.textContent =  data[0].breeds[0].weight.imperial + " lbs";
+
+    // dog height
+    let txtHeight = document.getElementById("heightTitle");
+    txtHeight.textContent = "Average Height: ";
+
     let dHeight = document.getElementById("dog-height");
-    dHeight.textContent= "Average Height: " + data[0].breeds[0].height.imperial + " inches";
+    dHeight.textContent = data[0].breeds[0].height.imperial + " inches";
+
+    // dog job
+    let txtJob= document.getElementById("jobTitle");
+    txtJob.textContent = "Bred For: ";
 
     let dJob = document.getElementById("dog-job");
-    dJob.textContent= "Bred For: " + data[0].breeds[0].bred_for;
+    dJob.textContent=  data[0].breeds[0].bred_for;
 
+    // dog life span
+    let txtLife= document.getElementById("lifeTitle");
+    txtLife.textContent = "Life Span: ";
+ 
     let dLife = document.getElementById("dog-life");
-    dLife.textContent= "Life Span: " + data[0].breeds[0].life_span;
+    dLife.textContent = data[0].breeds[0].life_span;
 
+    // dog temperment
+    let txtTemp= document.getElementById("tempTitle");
+    txtTemp.textContent = "Temperment: ";
+ 
     let dTemperment = document.getElementById("dog-temperment");
-    dTemperment.textContent= "Temperment: " + data[0].breeds[0].temperament;
+    dTemperment.textContent = data[0].breeds[0].temperament;
 }
 
-
-dogBreedList();
-
-
+// event listener for dropdown menu
 dogBreeds.addEventListener("change", function() {
-
     breedImages();
     breedName();
- 
 
     return;
 });
 
-
-
+// call main page functions
+dogCarousel();
+dogBreedList();
 
 
 
