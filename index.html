@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Pet Rescuer</title>
+    <title>The Dog Spot</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
+
 <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="https://bulma.io">
-            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-          </a>
-          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
+          <h2 class="title is-2">
+            <span class="icon">
+              <i class="fas fa-dog"></i>
+            </span>  The Dog Spot</h2>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
         </div>
        <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
@@ -50,16 +54,13 @@
               </div>
             </div>
           </div>
-      
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
-                <a class="button is-primary">
-                  <strong>Sign up</strong>
-                </a>
-                <a class="button is-light">
-                  Log in
-                </a>
+          <div class="field">
+            <!-- <label class="label">Dog Breed</label> -->
+            <div class="control">
+              <div class="select is-primary is-rounded">
+                <select id="dog-breed">
+                  <option>Select Your Dog Breed</option>
+                </select>
               </div>
             </div>
           </div>
@@ -93,27 +94,35 @@
 
     <!-- Main -->
     <section>
+
+      <!-- dog pictures -->
       <div class="tile is-ancestor">
         <div class="tile is-parent">
-          <article class="tile is-child box">
-            <p class="title">Side column</p>
-            <p class="subtitle">With some content</p>
-            <div class="content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+          <article class="tile is-child box has-background-info-light">
+            <div class="card-content is-flex is-justify-content-center">
+              <figure class="image">
+                <img src="" class="is-border-primary" id="dog-pic" />
+              </figure>
             </div>
           </article>
         </div>
+
+        <!-- dog information -->
         <div class="tile is-parent">
-          <article class="tile is-child box">
-            <p class="title">Main column</p>
-            <p class="subtitle">With some content</p>
+          <article class="tile is-child box has-background-info-light has-text-link-dark">
+            <p class="title has-text-link-dark" id="dog-name"></p>
             <div class="content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+              <p id="dog-weight"></p> 
+              <p id="dog-height"></p> 
+              <p id="dog-job"></p>
+              <p id="dog-life"></p>
+              <p id="dog-temperment"></p>   
             </div>
           </article>
         </div>
       </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -127,50 +136,31 @@
     </footer>
 
     <!--Search Modal-->
-    <div class="modal fade" id="search-form-modal" tabindex="-1" role="dialog" aria-labelledby="search-form-modal"
-    aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="search-form-modal">Add New Task</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                    <label for="modalTaskDescription">Task description</label>
-                    <textarea id="modalTaskDescription" rows="3" class="form-control"></textarea>
-                    </div>
-                    <div class="form-group">
-                    <label for="modalDueDate">Due date</label>
-                    <input type="text" class="form-control" id="modalDueDate" placeholder="mm/dd/yyyy" autocomplete="off" />
-                    </div>
-                </form>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-save">Save Task</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Pet Details Modal-->
-    <div class="modal">
+    <div class="modal" id="search-modal" aria-hidden="true">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Modal title</p>
+          <p class="modal-card-title">Select A Dog Breed</p>
           <button class="delete" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
-          <!-- Content ... -->
+
+           <!-- Pet Breed -->
+           <div class="field">
+            <label class="label">Dog Breed</label>
+            <div class="control">
+              <div class="select">
+                <select>
+                  <option>Select Breed</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success">Save changes</button>
-          <button class="button">Cancel</button>
+          <button class="button is-info is-outlined">Find My Pet</button>
+          <button class="button is-danger is-outlined">Cancel</button>
         </footer>
       </div>
     </div>
