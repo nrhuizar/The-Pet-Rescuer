@@ -83,12 +83,11 @@ let breedName = function () {
         nameEl.appendChild(favButton);
 
         favButton.onclick = function() {
-            saveBreed();
             addToFav();
         };
-    }
 
-    saveBreed();
+        saveBreed();
+    }
 }
 
 //let favButton = function() {
@@ -121,9 +120,10 @@ let addToFav = function() {
     let favE1 = document.getElementById("dog-name");
     let cln = favE1.cloneNode(true);
     favContainer.appendChild(cln);
-
-    debugger;
-    favBreed = breedName;
+    cln = [];
+    cln = breeds
+    cln.push(breeds);
+    breeds++;
     // // on click {
 //    var breed = ???
 //    // saveBreed(breed)
