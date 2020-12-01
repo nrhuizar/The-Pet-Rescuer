@@ -110,7 +110,10 @@
         <!-- dog information -->
         <div class="tile is-parent">
           <article class="tile is-child box has-background-info-light has-text-link-dark">
-            <p class="title has-text-link-dark" id="dog-name"></p>
+            <div class="level">
+              <button class="btn icon" onclick="addToFav()" id="fav-btn"><i class="far fa-star"></i></button>
+              <p class="title has-text-link-dark level-item" id="dog-name"></p>
+            </div>
             <div class="content">
               <p id="dog-weight"></p> 
               <p id="dog-height"></p> 
@@ -121,7 +124,14 @@
           </article>
         </div>
       </div>
+
+      <div class="panel is-link">
+        <h2 class="panel-heading">Favorites Breeds</h2>
+        <div class="panel-block" id="fav-breeds"></div>
+      </div>
     </section>
+
+
 
 
     <!-- Footer -->

@@ -4,6 +4,7 @@ let dogBreeds = document.getElementById("dog-breed");
 let dogPic = document.getElementById("dog-pic");
 let nameEl = document.getElementById("dog-name");
 let factEl = document.getElementById("dog-info");
+let favContainer = document.getElementById("fav-breeds")
 
 
 // carousel 
@@ -86,6 +87,15 @@ let breedInfo = function (data) {
 
     let dTemperment = document.getElementById("dog-temperment");
     dTemperment.textContent= "Temperment: " + data[0].breeds[0].temperament;
+}
+
+// save to favorite bar
+let addToFav = function() {
+    favEl = nameEl;    
+
+    if (favEl) {
+    favContainer.appendChild(favEl);
+    };
 }
 
 
