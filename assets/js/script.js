@@ -228,13 +228,13 @@ let breedInfo = function (data) {
 dogBreeds.addEventListener("change", function() {
     breedImages();
     breedName();
-
+    
     return;
 });
 
 // call main page functions
-dogCarousel();
 dogBreedList();
+dogCarousel();
 
 
 
