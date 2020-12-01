@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <h2 class="title is-2">
+          <h2 class="title is-1">
             <span class="icon">
               <i class="fas fa-dog"></i>
             </span>  The Dog Spot</h2>
@@ -26,33 +26,12 @@
         </div>
        <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">
+            <a class="navbar-item" href="./index.html">
               Home
             </a>
-            <a class="navbar-item">
-              Documentation
+            <a class="navbar-item" href="#fav-breeds">
+              Favorites
             </a>
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
-                More
-              </a>
-      
-              <div class="navbar-dropdown">
-                <a class="navbar-item">
-                  About
-                </a>
-                <a class="navbar-item">
-                  Jobs
-                </a>
-                <a class="navbar-item">
-                  Contact
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item">
-                  Report an issue
-                </a>
-              </div>
-            </div>
           </div>
           <div class="field">
             <!-- <label class="label">Dog Breed</label> -->
@@ -71,19 +50,28 @@
     <section class="hero is-medium has-carousel">
         <div id="carousel-demo" class="hero-carousel">
             <div class="item-1">
-                <!-- Slide Content -->
+              <img id="pic1" src="" alt="" />
             </div>
             <div class="item-2">
-                <!-- Slide Content -->
+              <img id="pic2" src="" alt="" />
             </div>
             <div class="item-3">
-                <!-- Slide Content -->
+              <img id="pic3" src="" alt="" />
             </div>
             <div class="item-4">
-                <!-- Slide Content -->
+              <img id="pic4" src="" alt="" />
             </div>
-            <div class="item-5">
-                <!-- Slide Content -->
+            <div class="item-5" id="pic4">
+              <img id="pic5" src="" alt="" />
+            </div>
+            <div class="item-6">
+              <img id="pic6" src="" alt="" />
+            </div>
+            <div class="item-7">
+              <img id="pic7" src="" alt="" />
+            </div>
+            <div class="item-8">
+              <img id="pic8" src="" alt="" />
             </div>
         </div>
         <div class="hero-head"></div>
@@ -110,16 +98,18 @@
         <!-- dog information -->
         <div class="tile is-parent">
           <article class="tile is-child box has-background-info-light has-text-link-dark">
-            <div class="level">
-              <!-- <button class="btn icon" onclick="addToFav()" id="fav-btn"><i class="far fa-star"></i></button> -->
-              <p class="title has-text-link-dark level-item" id="dog-name"></p>
-            </div>
-            <div class="content">
-              <p id="dog-weight"></p> 
-              <p id="dog-height"></p> 
-              <p id="dog-job"></p>
-              <p id="dog-life"></p>
-              <p id="dog-temperment"></p>   
+            <p class="title has-text-link-dark is-2" id="dog-name"></p>
+            <div class="content  has-text-link-dark">
+              <p class="title is-4 has-text-link-dark" id="weightTitle"></p>
+                <p class="subtitle is-5 has-text-link-dark mb-6" id="dog-weight"></p>
+              <p class="title is-4 has-text-link-dark" id="heightTitle"></p>
+                <p class="subtitle is-5 has-text-link-dark mb-6" id="dog-height"></p>
+              <p class="title is-4 has-text-link-dark" id="jobTitle"></p>
+                <p class="subtitle is-5 has-text-link-dark mb-6" id="dog-job"></p>
+              <p class="title is-4 has-text-link-dark" id="lifeTitle"></p>
+                <p class="subtitle is-5 has-text-link-dark mb-6" id="dog-life"></p>
+              <p class="title is-4 has-text-link-dark" id="tempTitle"></p>
+                <p class="subtitle is-5 has-text-link-dark" id="dog-temperment"></p>   
             </div>
           </article>
         </div>
