@@ -4,7 +4,8 @@ let dogBreeds = document.getElementById("dog-breed");
 let dogPic = document.getElementById("dog-pic");
 let nameEl = document.getElementById("dog-name");
 let factEl = document.getElementById("dog-info");
-let favContainer = document.getElementById("fav-breeds")
+let favContainer = document.getElementById("fav-breeds");
+let favBreed = [];
 
 
 // carousel 
@@ -69,6 +70,11 @@ let breedName = function () {
     nameEl.innerHTML = "";
     nameEl.append(chosenBreed);
     
+    var button = document.createElement("button");
+    button.classList.add = "btn icon far fa-star";
+    button.onclick = addToFav();
+
+    nameEl.prepend(button);
 }
 
 // display dog breed information
@@ -89,15 +95,48 @@ let breedInfo = function (data) {
     dTemperment.textContent= "Temperment: " + data[0].breeds[0].temperament;
 }
 
-// save to favorite bar
+// add to favorite bar
 let addToFav = function() {
-    favEl = nameEl;    
+    let favE1 = document.getElementById("dog-name");
+    let cln = favE1.cloneNode(true);
+    favContainer.appendChild(cln);
 
-    if (favEl) {
-    favContainer.appendChild(favEl);
-    };
+    favBreed = breedName;
+    // // on click {
+//    var breed = ???
+//    // saveBreed(breed)
+// }
+    saveBreed();
 }
 
+
+// function saveBreed(data){
+//  // save data to localStorage
+//  refreshFavs()
+// }
+
+let saveBreed = function() {
+    localStorage.setItem("favE1", JSON.stringify(favBreed));
+}
+
+// function refreshFavs() {
+//  // empty favs element
+//  // getItem all the favs from local storage  
+//  // repopulate
+// }
+let loadBreed = function() {
+    let savedBreeds = localStorage.getItem("favE1");
+
+    if (!savedBreeds) {
+        return false
+    }
+
+    savedBreeds = JSON.parse(savedBreeds);
+
+    for (var i = 0; i < savedBreeds.length; i++) {
+        dogBreeds(savedBreeds[i]);
+    }
+}
 
 dogBreedList();
 
