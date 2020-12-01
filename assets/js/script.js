@@ -70,22 +70,33 @@ let breedName = function () {
     nameEl.innerHTML = "";
     nameEl.append(chosenBreed);
 
-    breeds.push(chosenBreed);
+    
+    if (chosenBreed) {
+        var favButton = document.createElement("i");
+        favButton.className = "button icon"; 
+    
+        var favIcon = document.createElement("i");
+        favIcon.className = "far fa-star"; 
+
+        favButton.appendChild(favIcon);
+
+        nameEl.appendChild(favButton);
+
+        favButton.onclick = function() {
+            saveBreed();
+            addToFav();
+        };
+    }
 
     saveBreed();
 }
 
-let favButton = function() {
+//let favButton = function() {
     //generate fav button   
-    var button = document.createElement("button");
-    button.className = "button btn far fa-star";
-    button.onclick = addToFav();
+    
 
-    nameEl.appendChild(button);
-
-
-    button.addEventListener ("click", addToFav);
-}
+    //saveBreed();
+//}
 
 // display dog breed information
 let breedInfo = function (data) {
@@ -111,6 +122,7 @@ let addToFav = function() {
     let cln = favE1.cloneNode(true);
     favContainer.appendChild(cln);
 
+    debugger;
     favBreed = breedName;
     // // on click {
 //    var breed = ???
@@ -133,7 +145,7 @@ let saveBreed = function() {
 //  // getItem all the favs from local storage  
 //  // repopulate
 // }
-let loadBreed = function() {
+let loadBreeds = function() {
     let savedBreeds = localStorage.getItem("breeds");
     console.log(savedBreeds);
     if (!savedBreeds) {
@@ -149,7 +161,7 @@ let loadBreed = function() {
 
 dogBreedList();
 
-loadBreed();
+loadBreeds();
 
 dogBreeds.addEventListener("change", function() {
 
