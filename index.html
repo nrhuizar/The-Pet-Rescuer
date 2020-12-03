@@ -11,7 +11,7 @@
 
 
 <body>
-    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+    <nav id="home" class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <h2 class="title is-1">
             <span class="icon">
@@ -98,7 +98,9 @@
         <!-- dog information -->
         <div class="tile is-parent">
           <article class="tile is-child box has-background-info-light has-text-link-dark">
-            <p class="title has-text-link-dark is-2" id="dog-name"></p>
+            <div> 
+              <p class="title has-text-link-dark is-2" id="dog-name"><div id="breedSaveBtn"></div></p>
+            </div>
             <div class="content  has-text-link-dark">
               <p class="title is-4 has-text-link-dark" id="weightTitle"></p>
                 <p class="subtitle is-5 has-text-link-dark mb-6" id="dog-weight"></p>
@@ -116,7 +118,10 @@
       </div>
 
       <div class="panel is-link">
-        <h2 class="panel-heading">Favorites Breeds</h2>
+        <h2 class="panel-heading">Favorites Breeds
+          <a class="button is-link is-light is-small is-outline" href="#home">
+          Search Again
+        </a></h2>
         <div class="panel-block" id="fav-breeds">
         </div>
       </div>
@@ -136,35 +141,7 @@
         </div>
     </footer>
 
-    <!--Search Modal-->
-    <div class="modal" id="search-modal" aria-hidden="true">
-      <div class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Select A Dog Breed</p>
-          <button class="delete" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
 
-           <!-- Pet Breed -->
-           <div class="field">
-            <label class="label">Dog Breed</label>
-            <div class="control">
-              <div class="select">
-                <select>
-                  <option>Select Breed</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-        </section>
-        <footer class="modal-card-foot">
-          <button class="button is-info is-outlined">Find My Pet</button>
-          <button class="button is-danger is-outlined">Cancel</button>
-        </footer>
-      </div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
