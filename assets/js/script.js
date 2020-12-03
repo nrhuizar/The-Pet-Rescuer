@@ -34,7 +34,8 @@ let dogPic1 = function() {
             let randomPic = data.message;
             let p1 = document.getElementById("pic1");
             p1.setAttribute("src", randomPic);
-            p1.setAttribute("alt", "Image of Random Dog");            
+            p1.setAttribute("alt", "Image of Random Dog");
+            p1.setAttribute("class", "carousel-image");            
         })
     })
 }
@@ -47,7 +48,8 @@ let dogPic2 = function() {
             let randomPic = data.message;
             let p2 = document.getElementById("pic2");
             p2.setAttribute("src", randomPic);
-            p2.setAttribute("alt", "Image of Random Dog");            
+            p2.setAttribute("alt", "Image of Random Dog"); 
+            p1.setAttribute("class", "carousel-image");            
         })
     })
 }
@@ -60,7 +62,8 @@ let dogPic3 = function() {
             let randomPic = data.message;
             let p3 = document.getElementById("pic3");
             p3.setAttribute("src", randomPic);
-            p3.setAttribute("alt", "Image of Random Dog");  
+            p3.setAttribute("alt", "Image of Random Dog");
+            p1.setAttribute("class", "carousel-image");   
         })
     })
 }
@@ -74,6 +77,7 @@ let dogPic4 = function() {
             let p4 = document.getElementById("pic4");
             p4.setAttribute("src", randomPic);
             p4.setAttribute("alt", "Image of Random Dog");
+            p1.setAttribute("class", "carousel-image"); 
         })
     })
 }
@@ -86,7 +90,8 @@ let dogPic5 = function() {
             let randomPic = data.message;
             let p5 = document.getElementById("pic5");
             p5.setAttribute("src", randomPic);
-            p5.setAttribute("alt", "Image of Random Dog");   
+            p5.setAttribute("alt", "Image of Random Dog"); 
+            p1.setAttribute("class", "carousel-image");   
         })
     })
 }
@@ -99,7 +104,8 @@ let dogPic6 = function() {
             let randomPic = data.message;
             let p6 = document.getElementById("pic6");
             p6.setAttribute("src", randomPic);
-            p6.setAttribute("alt", "Image of Random Dog");   
+            p6.setAttribute("alt", "Image of Random Dog"); 
+            p1.setAttribute("class", "carousel-image");   
         })
     })
 }
@@ -113,6 +119,7 @@ let dogPic7 = function() {
             let p7 = document.getElementById("pic7");
             p7.setAttribute("src", randomPic);
             p7.setAttribute("alt", "Image of Random Dog");
+            p1.setAttribute("class", "carousel-image"); 
         })
     })
 }
@@ -124,7 +131,8 @@ let dogPic8 = function() {
             let randomPic = data.message;
             let p8 = document.getElementById("pic8");
             p8.setAttribute("src", randomPic);
-            p8.setAttribute("alt", "Image of Random Dog");    
+            p8.setAttribute("alt", "Image of Random Dog"); 
+            p1.setAttribute("class", "carousel-image");    
         })
     })
 }

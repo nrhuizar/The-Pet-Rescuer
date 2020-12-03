@@ -9,3 +9,8 @@ h2 {
 .icon {
     padding: 20px;
 }
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
