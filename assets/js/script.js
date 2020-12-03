@@ -193,7 +193,6 @@ let breedName = function () {
     let chosenBreed = dogBreeds.options[dogBreeds.selectedIndex].value;
     let chosenBreedID = dogBreeds.options[dogBreeds.selectedIndex].id;
     nameEl.innerHTML = "";
-    // nameEl.setAttribute("id", chosenBreedID);
     nameEl.append(chosenBreed);
 
     
@@ -206,11 +205,12 @@ let breedName = function () {
         favButton.appendChild(favIcon);
 
         // set attributes for button icon
-        favButton.classList = "button is-warning is-light is-medium is-outlined";
+        favButton.classList = "button is-warning is-light is-small is-outlined";
         favButton.setAttribute("onclick", `addToFav()`);
 
         let breedSaveBtn = document.getElementById("breedSaveBtn");
         breedSaveBtn.innerHTML = "";
+        breedSaveBtn.textContent = "Save This Breed: ";
         breedSaveBtn.appendChild(favButton);
 
         // favButton.onclick = function() {
