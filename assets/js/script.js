@@ -7,7 +7,6 @@ let factEl = document.getElementById("dog-info");
 let favContainer = document.getElementById("fav-breeds");
 let breeds = [];
 
-
 // carousel 
 bulmaCarousel.attach('#carousel-demo', {
     slidesToScroll: 1,
@@ -185,30 +184,25 @@ let breedName = function () {
     nameEl.innerHTML = "";
     nameEl.append(chosenBreed);
 
-    
+    //create fav button
     if (chosenBreed) {
-        var favButton = document.createElement("i");
+        let favButton = document.createElement("i");
         favButton.className = "button icon"; 
     
-        var favIcon = document.createElement("i");
+        let favIcon = document.createElement("i");
         favIcon.className = "far fa-star"; 
 
         favButton.appendChild(favIcon);
 
         nameEl.appendChild(favButton);
 
-        favButton.onclick = function() {
-            addToFav();
+        favButton.onclick = function(event) {
+            chosenBreed = event.currentTarget.parentElement.innerText;
+            // console.log(chosenBreed);
+            addToFav(chosenBreed);
         };
     }
 }
-
-//let favButton = function() {
-    //generate fav button   
-    
-
-    //saveBreed();
-//}
 
 // display dog breed information
 let breedInfo = function (data) {
@@ -250,58 +244,62 @@ let breedInfo = function (data) {
 }
 
 // add to favorite bar
-let addToFav = function(breeds) {
-    let favE1 = document.getElementById("dog-name");
-    let cln = favE1.cloneNode(true);
-    cln.className = "fav-breed title has-text-link-dark is-2";
-    favContainer.appendChild(cln);
-    
-    var favListE1 = document.createElement("li");
-    favListE1.className = "fav-breed";
+let addToFav = function(value) {
+    // get current array in ls, or use an empty array if null
 
-    favContainer.appendChild(favListE1);
+    for (let i = 0; i < breeds.length; i++) {
+        if (breeds[i]) {
+            displayFaves();
+        }
+        else if (!breeds) {
+            breeds = [];
+        }
+    }
 
-    cln.value = breeds
-
-    breeds = [];
-
-    // // on click {
-//    var breed = ???
-//    // saveBreed(breed)
-// }
-    saveBreed();
-}
-
-
-// function saveBreed(data){
-//  // save data to localStorage
-//  refreshFavs()
-// }
-let saveBreed = function() {
+    // push value to this array ^
+    breeds.push(value);
+    // set it back to localStorage
     localStorage.setItem("breeds", JSON.stringify(breeds));
+    // console.log(breeds);
+
+    displayFaves();
 }
 
-// function refreshFavs() {
-//  // empty favs element
-//  // getItem all the favs from local storage  
-//  // repopulate
-// }
-let loadBreeds = function() {
-    let savedBreeds = localStorage.getItem("breeds");
-    console.log(savedBreeds);
-    if (!savedBreeds) {
+let displayFaves = function() {
+    // clear favContainer
+    // favContainer.innerHTML = "";
+    // pull localStorage
+    localStorage.getItem(breeds);
+    
+    if (!breeds) {
         return false
     }
 
-    savedBreeds = JSON.parse(savedBreeds);
+    // create new cards
+    for (var i = 0; i < breeds.length; i++) {
+    let favBreed = document.createElement("div");
+    favBreed.className = "card";
+    favBreed.innerHTML = breeds;
+    }
+    
+    console.log(breeds);
+    // append them to favContainer
+    // favContainer.appendChild(favBreed)
+}
 
-    for (var i = 0; i < savedBreeds.length; i++) {
-        addToFav(savedBreeds[i]);
+let loadBreeds = function() {
+    let chosenBreed = localStorage.getItem(breeds.value);
+
+    console.log(chosenBreed);
+    if (chosenBreed) {
+        displayFaves(chosenBreed);
+    } else if (!breeds) {
+        return false
     }
 }
 
 dogBreedList();
-
+addToFav();
 loadBreeds();
 
 // event listener for dropdown menu
@@ -371,4 +369,4 @@ dogCarousel();
 
 // function getAll(selector) {
 //     return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
-// };
+// }
