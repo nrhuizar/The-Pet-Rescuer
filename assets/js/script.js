@@ -200,8 +200,6 @@ let breedName = function () {
         favButton.onclick = function() {
             addToFav();
         };
-
-        saveBreed();
     }
 }
 
@@ -252,14 +250,21 @@ let breedInfo = function (data) {
 }
 
 // add to favorite bar
-let addToFav = function() {
+let addToFav = function(breeds) {
     let favE1 = document.getElementById("dog-name");
     let cln = favE1.cloneNode(true);
+    cln.className = "fav-breed title has-text-link-dark is-2";
     favContainer.appendChild(cln);
-    cln = [];
-    cln = breeds
-    cln.push(breeds);
-    breeds++;
+    
+    var favListE1 = document.createElement("li");
+    favListE1.className = "fav-breed";
+
+    favContainer.appendChild(favListE1);
+
+    cln.value = breeds
+
+    breeds = [];
+
     // // on click {
 //    var breed = ???
 //    // saveBreed(breed)
