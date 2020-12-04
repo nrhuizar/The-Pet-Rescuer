@@ -211,7 +211,7 @@ let breedName = function () {
     
         let breedSaveBtn = document.getElementById("breedSaveBtn");
         breedSaveBtn.innerHTML = "";
-        breedSaveBtn.textContent = "Save This Breed: ";
+        // breedSaveBtn.textContent = "Save This Breed: ";
         breedSaveBtn.appendChild(favButton);
         
         favButton.onclick = function(event) {
@@ -275,7 +275,7 @@ let breedInfo = function (data) {
     // push value to this array ^
     
 // add to favorite bar
-let addToFav = function(breeds) {
+let addToFav = function(value) {
 
     var favListE1 = document.createElement("li");
     favListE1.className = "fav-breed";
@@ -293,25 +293,22 @@ let addToFav = function(breeds) {
     
     
 
-    cln.value = breeds
-
+    cln.value = breeds;  
+    breeds.value = breeds;
     breeds.push(value);
+    console.log(breeds);
+    
 
-    for (let i = 0; i < breeds.length; i++) {
-    // set it back to localStorage
-        if (breeds) {
-        localStorage.setItem("breeds", JSON.stringify(breeds));
-        displayFaves();
-
-    // console.log(breeds);
-        } 
-    }
-
-    // // on click {
-//    var breed = ???
-//    // saveBreed(breed)
-// }
-    // saveBreed();
+    if (breeds) {
+        for (let i = 0; i < breeds.length; i++) {
+        // set it back to localStorage
+            if (breeds) {
+            localStorage.setItem("breeds", JSON.stringify(breeds));
+            displayFaves();      
+            console.log(breeds); 
+            } 
+        }
+    }   
 }
 
 // display to favContainer
@@ -322,12 +319,14 @@ let displayFaves = function(breeds) {
     localStorage.getItem(breeds);
     // console.log(breeds);
     // create new cards
-    for (let i = 0; i < breeds.length; i++) {
-    let favBreed = document.createElement("li");
-    favBreed.className = "card title has-text-link-dark is-2";
-    favBreed.innerHTML = breeds[i];
-    // append them to favContainer
-    favContainer.appendChild(favBreed);
+    if (breeds) {
+        for (var i = 0; i < breeds.length; i++) {
+            let favBreed = document.createElement("li");
+            favBreed.className = "card title has-text-link-dark is-2";
+            favBreed.innerHTML = breeds[i];
+            // append them to favContainer
+            favContainer.appendChild(favBreed);
+        }
     }
 }
 
