@@ -191,12 +191,12 @@ let breedImages = function() {
 // append Breed Name to Title in right card
 let breedName = function () {
     let chosenBreed = dogBreeds.options[dogBreeds.selectedIndex].value;
-    let chosenBreedID = dogBreeds.options[dogBreeds.selectedIndex].id;
+
     nameEl.innerHTML = "";
     nameEl.append(chosenBreed);
 
     
-    // if (nameEl) {
+    if (nameEl) {
         // create icon element
         var favButton = document.createElement("i");
         favButton.className = "button icon"; 
@@ -206,7 +206,7 @@ let breedName = function () {
 
         // set attributes for button icon
         favButton.classList = "button is-warning is-light is-small is-outlined";
-        favButton.setAttribute("onclick", `addToFav()`);
+        favButton.setAttribute("onclick", `breedCall()`);
 
         let breedSaveBtn = document.getElementById("breedSaveBtn");
         breedSaveBtn.innerHTML = "";
@@ -216,7 +216,13 @@ let breedName = function () {
         // favButton.onclick = function() {
         //     addToFav();
         // };
-    // }
+        
+    }
+}
+
+let breedCall = function() {
+    addToFav();
+    // setBreeds();
 }
 
 //let favButton = function() {
@@ -266,7 +272,7 @@ let breedInfo = function (data) {
 }
 
 // add to favorite bar
-let addToFav = function(breeds) {
+let addToFav = function() {
 
     var favListE1 = document.createElement("li");
     favListE1.className = "fav-breed";
@@ -276,56 +282,63 @@ let addToFav = function(breeds) {
 
     let chosenBreedID = dogBreeds.options[dogBreeds.selectedIndex].id;
     let favE1 = document.getElementById("dog-name");
-    let cln = favE1.cloneNode(true);
+    let cln = favE1
     cln.className = "fav-breed button is-info is-light is-medium is-outlined";
     cln.setAttribute("id", chosenBreedID)
     cln.setAttribute("onclick", `savedBreedImages("${cln.id}")`);
     favListE1.appendChild(cln);
+
+    // let breed =[cln];
+    // cBreeds.push (breed)
+    // localStorage.setItem("breeds", JSON.stringify(cBreeds));
     
-    
-
-    cln.value = breeds
-
-    breeds = [];
-
-    // // on click {
-//    var breed = ???
-//    // saveBreed(breed)
-// }
-    saveBreed();
 }
+
+// let savedBreedButtons = function () {
+//     let breedBtnEl = 
+
+// }
+
+// get saved breeds from local storage
+if (localStorage.getItem("breeds")) {
+    breeds = JSON.parse(localStorage.getItem("breeds"));
+} else {
+    breeds = []
+}
+
+// place the loaded tasks in their hourly spots
+let savedDog = function() {
+    $.each(breeds, function(i) {
+        if (breeds[i]) {
+            nameEl[i].value = breeds[i];
+        }
+    })
+};
+
+
+// create the tasks using text entered into the <textare>
+let setBreeds = function() {
+    var breeds = {};
+    $("#fav-breeds").each(function() {
+        breeds[this.id] = this.value;
+    })
+    localStorage.setItem("breeds", JSON.stringify(breeds));
+
+};
 
 
 // function saveBreed(data){
 //  // save data to localStorage
 //  refreshFavs()
 // }
-let saveBreed = function() {
-    localStorage.setItem("breeds", JSON.stringify(breeds));
-}
+// create the tasks using text entered into the <textare>
 
-// function refreshFavs() {
-//  // empty favs element
-//  // getItem all the favs from local storage  
-//  // repopulate
-// }
-let loadBreeds = function() {
-    let savedBreeds = localStorage.getItem("breeds");
-    console.log(savedBreeds);
-    if (!savedBreeds) {
-        return false
-    }
 
-    savedBreeds = JSON.parse(savedBreeds);
 
-    for (var i = 0; i < savedBreeds.length; i++) {
-        addToFav(savedBreeds[i]);
-    }
-}
 
-dogBreedList();
+// dogBreedList();
 
-loadBreeds();
+// loadBreeds();
 
 
 //get saved breed images and append to main content
