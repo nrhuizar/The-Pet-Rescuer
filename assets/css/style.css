@@ -23,6 +23,7 @@ h2 {
     color: orange;
 }
 
-.li {
-    list-style-type: none;
+li {
+    list-style: none;
+    padding: 10px;
 }
