@@ -9,3 +9,7 @@ h2 {
 .icon {
     padding: 20px;
 }
+li {
+    list-style: none;
+    padding: 10px;
+}
