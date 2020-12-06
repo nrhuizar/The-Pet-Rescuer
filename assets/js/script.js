@@ -274,17 +274,22 @@ let addToFav = function() {
 }
 
 // display to favContainer
-let displayFaves = function(value) {
+let displayFaves = function(savedBreeds) {
     // clear favContainer
     favContainer.innerHTML = "";
 
     console.log(savedBreeds);
     // create new cards
-    let favBreed = document.createElement("li");
-    favBreed.className = "card title has-text-link-dark is-2";
-    favBreed.innerHTML = savedBreeds[i];
+    for (var i = 0; i < savedBreeds.length; i++) {
+    let favE1 = document.createElement("li");
+    // let favBreedId = dogBreeds.options[dogBreeds.selectedIndex].id;
+    favE1.className = "fav-breed button is-info is-light is-medium is-outlined mx-2";
+    // favE1.setAttribute("id", favBreedId);
+    // favE1.setAttribute("onclick", `savedBreedImages("${favE1.id}")`);
+    favE1.innerHTML = savedBreeds[i];
     // append them to favContainer
-    favContainer.appendChild(favBreed);
+    favContainer.appendChild(favE1);
+    }
 };
 
 let loadBreeds = function() {
@@ -297,8 +302,7 @@ let loadBreeds = function() {
     savedBreeds = JSON.parse(savedBreeds);
     // console.log(savedBreeds);
     for (var i = 0; i < savedBreeds.length; i++) {
-        displayFaves(savedBreeds[i]);
-        console.log(savedBreeds);
+        displayFaves(savedBreeds);
     }
 
 };
