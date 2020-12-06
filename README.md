@@ -1,23 +1,29 @@
-# The-Pet-Rescuer
+# The-Dog-Spot
 
-The Pet Rescuer is a site geared towards helping the user find the perfect pet to adopt.
+The Pet Rescuer is a site geared towards helping the user find the perfect dog breed for themselves.
 
 ## Description
 
-Our goal is to create a friendly user-experience while looking for pets to adopt.  We will be working with the petfinder.com API for the primary function of the site.
+Our goal is to utilize the knowledge we have gained in Front-End Development to use HTML, CSS, and JavaScript to create a fully functioning site.  We used this project to incorporate multiple APIs and a separate CSS framework.  Outside of showing our technical skills, we wanted to have fun and build a site where the user can find their perfect breed or just enjoy looking at dog pictures!
 
-## Include
+## Authors
 
-- MVP - Dogs only
-- Search form through PetFinder.com API
-- Find out more info about a specific pet through a modal
+Erica Siegel
+Nick Huizar
 
-## Ideas/Future Plans
+## Page Includes
 
-- Carousel Header with adoptable pets
-- Include Meetup - API
-- Store your favorite pets in a pop-out shopping cart
-- Search Include
-  - Location
-  - Animal Type
-  - Other features
+- HTML
+- CSS
+- JavaScript
+- TheDogAPI - https://thedogapi.com/
+- Dog API - https://dog.ceo/dog-api/
+- Bulma - https://bulma.io/
+
+## Special Features
+
+- Full list of all dog breeds from TheDogAPI
+- Mobile 1st Design
+- Dynamically loaded elements through JavaScript
+- Carousel Header with dog images
+- Show your favorite breeds in a Favorite Bar (save via localStorage coming soon)
