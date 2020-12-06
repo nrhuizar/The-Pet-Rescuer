@@ -5,7 +5,9 @@ const dogPic = document.getElementById("dog-pic");
 const nameEl = document.getElementById("dog-name");
 const factEl = document.getElementById("dog-info");
 const favContainer = document.getElementById("fav-breeds");
-let breeds = [];
+let breeds = localStorage.getItem('breeds')
+    ? JSON.parse(localStorage.getItem('breeds'))
+    : []
 
 // carousel 
 bulmaCarousel.attach('#carousel-demo', {
@@ -187,7 +189,7 @@ let breedImages = function() {
 }
 
 // append Breed Name to Title in right card
-let breedName = function (event) {
+let breedName = function () {
     let chosenBreed = dogBreeds.options[dogBreeds.selectedIndex].value;
     nameEl.innerHTML = "";
     nameEl.append(chosenBreed);
@@ -274,37 +276,22 @@ let addToFav = function() {
 }
 
 // display to favContainer
-let displayFaves = function(savedBreeds) {
+let displayFaves = function() {
     // clear favContainer
     favContainer.innerHTML = "";
     
     // console.log(savedBreeds);
     // create new cards
-    for (var i = 0; i < savedBreeds.length; i++) {
+    for (var i = 0; i < breeds.length; i++) {
     let favE1 = document.createElement("li");
     let favBreedId = dogBreeds.options[dogBreeds.selectedIndex].id;
-    favE1.className = "fav-breed button is-info is-light is-medium is-outlined mx-2";
+    favE1.className = "fav-breed button is-info is-light is-medium is-outlined mx-2 my-2";
     favE1.setAttribute("id", favBreedId);
     favE1.setAttribute("onclick", `savedBreedImages("${favE1.id}")`);
-    favE1.innerHTML = savedBreeds[i];
+    favE1.innerHTML = breeds[i];
     // append them to favContainer
     favContainer.appendChild(favE1);
     }
-};
-
-let loadBreeds = function() {
-    var savedBreeds
-
-    if (localStorage.getItem('breeds')) {
-        savedBreeds = JSON.parse(localStorage.getItem('breeds'))
-    } else {
-        breeds = []
-    }
-    
-    for (var i = 0; i < savedBreeds.length; i++) {
-        displayFaves(savedBreeds);
-    }
-
 };
 
 let saveBreed = function() {
@@ -405,4 +392,4 @@ document.addEventListener('DOMContentLoaded', () => {
 // call main page functions
 dogBreedList();
 dogCarousel();
-loadBreeds();
+displayFaves(breeds);
