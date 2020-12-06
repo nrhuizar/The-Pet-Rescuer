@@ -21,3 +21,5 @@ Our goal is to create a friendly user-experience while looking for pets to adopt
   - Location
   - Animal Type
   - Other features
+
+  
