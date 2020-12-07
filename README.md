@@ -22,4 +22,12 @@ Our goal is to create a friendly user-experience while looking for pets to adopt
   - Animal Type
   - Other features
 
-  
+
+
+
+
+
+
+
+
+ ![The Dog Spot](./assets/images/ScreenShot.png?raw=true)
