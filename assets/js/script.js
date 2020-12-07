@@ -193,10 +193,10 @@ let breedImages = function() {
 // append Breed Name to Title in right card
 let breedName = function () {
     let chosenBreed = dogBreeds.options[dogBreeds.selectedIndex].value;
+    let chosenBreedID = dogBreeds.options[dogBreeds.selectedIndex].id;
     nameEl.innerHTML = "";
     nameEl.append(chosenBreed);
     nameEl.value = chosenBreed;
-
     let saveInfo = {
         name: chosenBreed,
         id: chosenBreedID
