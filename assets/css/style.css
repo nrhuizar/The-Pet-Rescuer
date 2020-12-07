@@ -9,6 +9,20 @@ h2 {
 .icon {
     padding: 20px;
 }
+
+.button {
+    border: none;
+    background: none;
+}
+
+.button:active {
+    color: orange;
+}
+
+.button:focus {
+    color: orange;
+}
+
 li {
     list-style: none;
     padding: 10px;
