@@ -9,7 +9,7 @@ const favContainer = document.getElementById("fav-breeds");
 let breeds = localStorage.getItem('breeds')
     ? JSON.parse(localStorage.getItem('breeds'))
     : []
-    // savedBreedInfo(breeds);
+
 
 // carousel 
 bulmaCarousel.attach('#carousel-demo', {
