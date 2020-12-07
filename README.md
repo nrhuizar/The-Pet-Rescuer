@@ -27,3 +27,23 @@ Nick Huizar
 - Dynamically loaded elements through JavaScript
 - Carousel Header with dog images
 - Show your favorite breeds in a Favorite Bar (save via localStorage coming soon)
+
+- Carousel Header with adoptable pets
+- Include Meetup - API
+- Store your favorite pets in a pop-out shopping cart
+- Search Include
+  - Location
+  - Animal Type
+  - Other features
+
+
+ ![The Dog Spot](./assets/images/ScreenShot.png?raw=true)
+=======
+  
+ ## Site
+ 
+ https://nrhuizar.github.io/The-Pet-Rescuer/
+ 
+ ## Screenshot
+ 
+
