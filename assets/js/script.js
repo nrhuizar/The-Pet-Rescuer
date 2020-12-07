@@ -1,13 +1,14 @@
-let apiKey = "api_key=f45eb31a-c19e-4ac6-8c65-5035ba2b4484";
-let dogUrl = "https://api.TheDogAPI.com/v1/breeds?"
-let dogBreeds = document.getElementById("dog-breed");
-let dogPic = document.getElementById("dog-pic");
-let nameEl = document.getElementById("dog-name");
-let factEl = document.getElementById("dog-info");
-let favContainer = document.getElementById("fav-breeds");
-
-let breeds = [];
-
+const apiKey = "api_key=f45eb31a-c19e-4ac6-8c65-5035ba2b4484";
+const dogUrl = "https://api.TheDogAPI.com/v1/breeds?";
+const dogBreeds = document.getElementById("dog-breed");
+const dogPic = document.getElementById("dog-pic");
+const nameEl = document.getElementById("dog-name");
+const factEl = document.getElementById("dog-info");
+const favContainer = document.getElementById("fav-breeds");
+// set array to pull from localStorage or create an empty array
+let breeds = localStorage.getItem('breeds')
+    ? JSON.parse(localStorage.getItem('breeds'))
+    : []
 
 // carousel 
 bulmaCarousel.attach('#carousel-demo', {
@@ -191,40 +192,33 @@ let breedImages = function() {
 // append Breed Name to Title in right card
 let breedName = function () {
     let chosenBreed = dogBreeds.options[dogBreeds.selectedIndex].value;
-    let chosenBreedID = dogBreeds.options[dogBreeds.selectedIndex].id;
     nameEl.innerHTML = "";
     nameEl.append(chosenBreed);
-
+    nameEl.value = chosenBreed;
+    breeds.push(chosenBreed);
+    // console.log(breeds);
     
-    // if (nameEl) {
-        // create icon element
-        var favButton = document.createElement("i");
-        favButton.className = "button icon"; 
-        var favIcon = document.createElement("i");
-        favIcon.className = "far fa-star"; 
-        favButton.appendChild(favIcon);
+    // create icon element
+    var favButton = document.createElement("i");
+    favButton.className = "button icon"; 
+    var favIcon = document.createElement("i");
+    favIcon.className = "far fa-star"; 
+    favButton.appendChild(favIcon);
 
-        // set attributes for button icon
-        favButton.classList = "button is-warning is-light is-small is-outlined";
-        favButton.setAttribute("onclick", `addToFav()`);
+    // set attributes for button icon
+    favButton.classList = "button is-warning is-light is-small is-outlined";
+    // favButton.setAttribute("onclick", `addToFav()`, "saveBreed()");
 
-        let breedSaveBtn = document.getElementById("breedSaveBtn");
-        breedSaveBtn.innerHTML = "";
-        breedSaveBtn.textContent = "Save This Breed: ";
-        breedSaveBtn.appendChild(favButton);
+    favButton.onclick = function() {
+        addToFav();
+        saveBreed();
+    };
 
-        // favButton.onclick = function() {
-        //     addToFav();
-        // };
-    // }
+    let breedSaveBtn = document.getElementById("breedSaveBtn");
+    breedSaveBtn.innerHTML = "";
+    // breedSaveBtn.textContent = "Save This Breed: ";
+    breedSaveBtn.appendChild(favButton);
 }
-
-//let favButton = function() {
-    //generate fav button   
-    
-
-    //saveBreed();
-//}
 
 // display dog breed information
 let breedInfo = function (data) {
@@ -264,10 +258,9 @@ let breedInfo = function (data) {
     let dTemperment = document.getElementById("dog-temperment");
     dTemperment.textContent = data[0].breeds[0].temperament;
 }
-
+    
 // add to favorite bar
-let addToFav = function(breeds) {
-
+let addToFav = function() {
     var favListE1 = document.createElement("li");
     favListE1.className = "fav-breed";
 
@@ -281,52 +274,57 @@ let addToFav = function(breeds) {
     cln.setAttribute("id", chosenBreedID)
     cln.setAttribute("onclick", `savedBreedImages("${cln.id}")`);
     favListE1.appendChild(cln);
-    
-    
-
-    cln.value = breeds
-
-    breeds = [];
-
-    // // on click {
-//    var breed = ???
-//    // saveBreed(breed)
-// }
-    saveBreed();
 }
 
+// display to favContainer
+let displayFaves = function(event) {
+    // clear favContainer
+    favContainer.innerHTML = "";
 
-// function saveBreed(data){
-//  // save data to localStorage
-//  refreshFavs()
-// }
+    // create new cards
+    for (var i = 0; i < breeds.length; i++) {
+        let favE1 = document.createElement("li");
+        let favBreedId = dogBreeds.options[dogBreeds.selectedIndex].id;
+        favE1.className = "fav-breed button is-info is-light is-medium is-outlined mx-2 my-2";
+        favE1.setAttribute("id", favBreedId);
+        favE1.setAttribute("onclick", `savedBreedImages("${favE1.id}")`);
+        favE1.innerHTML = breeds[i];
+        // append them to favContainer
+        favContainer.appendChild(favE1);
+        console.log(favBreedId);
+
+        // let delButton = document.createElement("button");
+        // delButton.setAttribute("id", favBreedId)
+        // delButton.className = "delete delete-btn mx-1";
+        // favE1.appendChild(delButton);
+
+        // const targetE1 = event.target;    
+        // if (targetE1.matches(".delete-btn")) {
+        //     console.log("delete", targetE1);
+        //     let favBreedId = targetE1.getAttribute("id");
+        //     deleteBreed(favBreedId);
+        // }
+    }   
+};
+
 let saveBreed = function() {
     localStorage.setItem("breeds", JSON.stringify(breeds));
-}
+    // console.log(breeds);
+};
 
-// function refreshFavs() {
-//  // empty favs element
-//  // getItem all the favs from local storage  
-//  // repopulate
+// let deleteBreed = function(favBreedId) {
+//     console.log(favBreedId);
+//     let breedSelected = document.querySelector(".fav-breed[id='" + favBreedId + "']");
+//     breedSelected.remove();
+
+//     let updatedBreedArr = [];
+
+//     for (let i = 0; i < breeds.length; i++) {
+//         if (breeds[i].id !== parseInt(favBreedId)) {
+//             updatedBreedArr.push(breeds[i]);
+//         }
+//     }
 // }
-let loadBreeds = function() {
-    let savedBreeds = localStorage.getItem("breeds");
-    console.log(savedBreeds);
-    if (!savedBreeds) {
-        return false
-    }
-
-    savedBreeds = JSON.parse(savedBreeds);
-
-    for (var i = 0; i < savedBreeds.length; i++) {
-        addToFav(savedBreeds[i]);
-    }
-}
-
-dogBreedList();
-
-loadBreeds();
-
 
 //get saved breed images and append to main content
 let savedBreedImages = function(id) {
@@ -391,8 +389,6 @@ let savedBreedInfo = function (data) {
     dTemperment.textContent = data[0].breeds[0].temperament;
 }
 
-
-
 // event listener for dropdown menu
 dogBreeds.addEventListener("change", function() {
     breedImages();
@@ -401,6 +397,26 @@ dogBreeds.addEventListener("change", function() {
     return;
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Get all "navbar-burger" elements
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    // Check if there are any navbar burgers
+    if ($navbarBurgers.length > 0) {
+      // Add a click event on each of them
+      $navbarBurgers.forEach( el => {
+        el.addEventListener('click', () => {
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+        });
+      });
+    }
+  });
+
 // call main page functions
 dogBreedList();
 dogCarousel();
+displayFaves(breeds);
