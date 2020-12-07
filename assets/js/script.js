@@ -10,7 +10,6 @@ let breeds = localStorage.getItem('breeds')
     ? JSON.parse(localStorage.getItem('breeds'))
     : []
 
-
 // carousel 
 bulmaCarousel.attach('#carousel-demo', {
     slidesToScroll: 1,
@@ -196,13 +195,7 @@ let breedName = function () {
     nameEl.innerHTML = "";
     nameEl.append(chosenBreed);
     nameEl.value = chosenBreed;
-
-    let saveInfo = {
-        name: chosenBreed,
-        id: chosenBreedID
-    };
-    
-    breeds.push(saveInfo);
+    breeds.push(chosenBreed);
     // console.log(breeds);
     
     // create icon element
@@ -293,11 +286,9 @@ let displayFaves = function(event) {
         let favE1 = document.createElement("li");
         let favBreedId = dogBreeds.options[dogBreeds.selectedIndex].id;
         favE1.className = "fav-breed button is-info is-light is-medium is-outlined mx-2 my-2";
-
-        favE1.setAttribute("id", breeds[i].id);
+        favE1.setAttribute("id", favBreedId);
         favE1.setAttribute("onclick", `savedBreedImages("${favE1.id}")`);
-        favE1.innerHTML = breeds[i].name;
-
+        favE1.innerHTML = breeds[i];
         // append them to favContainer
         favContainer.appendChild(favE1);
         console.log(favBreedId);
@@ -429,4 +420,3 @@ document.addEventListener('DOMContentLoaded', () => {
 dogBreedList();
 dogCarousel();
 displayFaves(breeds);
-
