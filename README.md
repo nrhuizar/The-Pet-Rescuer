@@ -21,6 +21,10 @@ Our goal is to create a friendly user-experience while looking for pets to adopt
   - Location
   - Animal Type
   - Other features
+
+
+ ![The Dog Spot](./assets/images/ScreenShot.png?raw=true)
+=======
   
  ## Site
  
@@ -28,3 +32,4 @@ Our goal is to create a friendly user-experience while looking for pets to adopt
  
  ## Screenshot
  
+
