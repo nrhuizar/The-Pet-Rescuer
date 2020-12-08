@@ -223,7 +223,7 @@ let breedName = function () {
 
     let breedSaveBtn = document.getElementById("breedSaveBtn");
     breedSaveBtn.innerHTML = "";
-    // breedSaveBtn.textContent = "Save This Breed: ";
+    breedSaveBtn.textContent = "Save This Breed: ";
     breedSaveBtn.appendChild(favButton);
 }
 
